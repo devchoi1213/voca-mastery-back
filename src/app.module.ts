@@ -19,7 +19,7 @@ import {MysqlModule} from "./share/db/mysql.module";
 			load: [authConfig, databaseConfig, smsConfig, mapConfig],
 			isGlobal: true,
 		}),
-		MysqlModule,
+		// MysqlModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

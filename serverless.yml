@@ -1,8 +1,27 @@
-service: serverless-example
+service: voca-mastery
+
+package:
+  excludeDevDependencies: false # serverless-plugin-include-dependencies 플러그인을 사용하기 위해
+  exclude:
+    - '**/**'
+#    - 'tests-integration/**'
+#    - '.idea/**'
+#    - '.idea/**'
+#    - 'serverless-configs/**'
+#    - 'support/**'
+#    - 'node_modules/.cache/**'
+#    - 'src/**'
+  include:
+    - 'dist/**'
+    - 'env/**'
+
 plugins:
   - serverless-offline
   - serverless-dotenv-plugin
-  - serverless-jetpack
+#  - serverless-jetpack
+  - serverless-plugin-include-dependencies # make your deployed functions smaller. (node_modules를 제외하고 handler가 의존하는 각 모듈 파일을 개별적으로 추가)
+  - serverless-plugin-common-excludes
+
 
 #custom:
 #  dotenv:
@@ -39,6 +58,20 @@ functions:
           path: '{proxy+}'
 #    warmup: true
 
+#resources:
+#  Resources:
+#    DB:
+#      Type: AWS::RDS::DBInstance
+#      Properties:
+#        AllocatedStorage: 20
+#        DBInstanceClass: db.t3.micro
+#        DBInstanceIdentifier: voca-mastery-db
+#        PubliclyAccessible: true
+#        StorageType: gp2
+#        MasterUsername: admin # change
+#        MasterUserPassword: 937766wns!2# # change
+#        Engine: mysql
+#        EngineVersion: 8.0.33
 
 custom:
   dotenv:

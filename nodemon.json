@@ -2,6 +2,6 @@
   "watch": ["src/**/*.ts", "src/**/*.yaml"],
   "ext": "ts",
   "ignore": ["node_modules"],
-  "exec": "nest build && cross-env NODE_ENV=development sls offline --disableCookieValidation",
+  "exec": "nest build --webpack && cross-env NODE_ENV=development sls offline --disableCookieValidation",
   "legacyWatch": true
 }
